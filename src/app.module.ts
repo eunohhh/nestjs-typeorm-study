@@ -10,6 +10,16 @@ import {
   ENV_DB_PORT_KEY,
   ENV_DB_USERNAME_KEY,
 } from './common/const/env-keys.const';
+import {
+  AirplaneModel,
+  BookModel,
+  CarModel,
+  ComputerModel,
+  SingleBaseModel,
+} from './entities/inheritance.entity';
+import { StudentModel, TeacherModel } from './entities/person.entity';
+import { ProfileModel } from './entities/profile.entity';
+import { UserModel } from './entities/user.entity';
 
 @Module({
   imports: [
@@ -17,6 +27,7 @@ import {
       envFilePath: '.env',
       isGlobal: true,
     }),
+    TypeOrmModule.forFeature([UserModel, ProfileModel]),
     TypeOrmModule.forRoot({
       // 데이터베이스 타입
       type: 'postgres',
@@ -25,7 +36,17 @@ import {
       username: process.env[ENV_DB_USERNAME_KEY],
       password: process.env[ENV_DB_PASSWORD_KEY],
       database: process.env[ENV_DB_DATABASE_KEY],
-      entities: [],
+      entities: [
+        UserModel,
+        StudentModel,
+        TeacherModel,
+        BookModel,
+        CarModel,
+        ComputerModel,
+        AirplaneModel,
+        SingleBaseModel,
+        ProfileModel,
+      ],
       synchronize: true,
     }),
   ],
