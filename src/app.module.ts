@@ -18,7 +18,9 @@ import {
   SingleBaseModel,
 } from './entities/inheritance.entity';
 import { StudentModel, TeacherModel } from './entities/person.entity';
+import { PostModel } from './entities/post.entity';
 import { ProfileModel } from './entities/profile.entity';
+import { TagModel } from './entities/tag.entity';
 import { UserModel } from './entities/user.entity';
 
 @Module({
@@ -27,7 +29,7 @@ import { UserModel } from './entities/user.entity';
       envFilePath: '.env',
       isGlobal: true,
     }),
-    TypeOrmModule.forFeature([UserModel, ProfileModel]),
+    TypeOrmModule.forFeature([UserModel, ProfileModel, PostModel, TagModel]),
     TypeOrmModule.forRoot({
       // 데이터베이스 타입
       type: 'postgres',
@@ -46,6 +48,8 @@ import { UserModel } from './entities/user.entity';
         AirplaneModel,
         SingleBaseModel,
         ProfileModel,
+        PostModel,
+        TagModel,
       ],
       synchronize: true,
     }),

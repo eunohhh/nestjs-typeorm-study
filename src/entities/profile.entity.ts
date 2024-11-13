@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { UserModel } from './user.entity';
 
 @Entity()
@@ -13,7 +7,7 @@ export class ProfileModel {
   id: number;
 
   @OneToOne(() => UserModel, (user) => user.profile)
-  @JoinColumn()
+  // @JoinColumn() <-- 이게 양쪽에 있으면 문제 발생
   user: UserModel;
 
   @Column()
