@@ -54,4 +54,9 @@ export class AppController {
   async getTags() {
     return this.appService.getTags();
   }
+
+  @Post('sample')
+  async postSample() {
+    return this.appService.createSample();
+  }
 }
